@@ -1,0 +1,215 @@
+.container {
+    display: flex;
+    min-height: 100vh;
+    flex-wrap: wrap;
+  }
+  
+  .c1 {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    margin: 10px;
+    position: sticky;
+    top: 0px;
+    height: fit-content;
+    align-self: flex-start;
+    flex-shrink: 0;
+    padding: 15px;
+  }
+  
+  .c2 {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 10px;
+    gap: 10px;
+    position: relative;
+    background-color: white;
+    min-height: 400px;
+  }
+  
+  .project {
+    height: auto;
+    width: 700px; /* Default desktop width */
+    aspect-ratio: 1;
+    transition: transform 0.2s ease;
+  }
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  button {
+    all: unset;
+    cursor: pointer;
+    max-width: 500px;
+    height: auto;
+  }
+  
+  .modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 10;
+  }
+  
+  .modal.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .modal-content {
+    background: white;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+  }
+  
+  .modal.active .modal-content {
+    transform: translateY(0);
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .modal-title {
+    font-size: 2.2rem; /* Make modal title bigger */
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .close-btn {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #666;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+  }
+  
+  .close-btn:hover {
+    background: #f0f0f0;
+    transform: scale(1.1);
+  }
+  
+  .modal-body {
+    color: #555;
+    line-height: 1.6;
+    font-size: 1.2rem; /* Make modal body text bigger */
+  }
+  
+  /* Responsive breakpoints */
+  @media (max-width: 1200px) {
+    .project {
+      width: 500px; /* Smaller on medium screens */
+    }
+  
+    .c1 {
+      width: 400px; /* Adjust sidebar width */
+    }
+  }
+  
+  @media (max-width: 900px) {
+    .project {
+      width: 350px; /* Even smaller on tablets */
+    }
+  
+    .c1 {
+      width: 300px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column; /* Stack vertically on mobile */
+    }
+  
+    .c1 {
+      width: 100%;
+      position: static; /* Remove sticky on mobile */
+      margin: 10px 0;
+    }
+  
+    .c2 {
+      margin: 0 10px;
+    }
+  
+    .project {
+      width: calc(50% - 5px); /* Two projects per row on mobile */
+      max-width: 300px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .project {
+      width: 100%; /* Single column on very small screens */
+      max-width: 250px;
+    }
+  
+    .modal-content {
+      padding: 15px; /* Less padding on small screens */
+    }
+  
+    .modal-title {
+      font-size: 1.5rem; /* Smaller title on mobile */
+    }
+  }
+  
+  .span-h1 {
+    font-size: 1.2rem; /* Use font-size instead of text-size-adjust */
+  }
+  
+  h1 {
+    font-family: "PT Sans", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 2.5rem; /* Make h1 bigger */
+  }
+  
+  p {
+    font-family: "PT Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.1rem; /* Make paragraphs bigger */
+  }
+  
+  span {
+    font-family: "PT Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.1rem; /* Make spans bigger */
+  }
+
+  .socials{
+    margin-top: 50px;
+  }
+
+  a{
+    all: unset;
+    cursor: pointer;
+  }

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>vicdoesthings</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">  
+    </head>
+<body class="container">
+    <div class="c1">
+        <div>
+            <h1>Hey, I'm <u>Vic</u>!</h1>
+        </div>
+        <div>
+            <span>
+            I generally enjoy cs and math, an aspiring polymath with broad interests in software infrastructure,
+             systems and tooling. Some other interest of mine are in applied math and machine learning.
+             <br><br>During my free time, I like to keep up with esports, shows and sometimes contribute to
+              interesting open source project (right now, just linux kernel).
+            </span>
+        </div>
+        <p>Check out my stuff --></p>
+        <div class="socials">
+            <a href="https://www.linkedin.com/in/vichekaoeun/"><u>linkedin</u></a>
+            .
+            <a href="https://github.com/vichekaoeun"><u>github</u></a>
+        </div>
+    </div>
+    <div class="c2">
+        <button class="project" onclick="onClickProject('project1')">
+            <img src="images/cute-go.png" alt="Golang mascot">
+        </button>
+
+        <button class="project" onclick="onClickProject('project2')">
+            <img src="images/hacker meme.png" alt="Hacker meme">
+        </button>
+        
+        <button class="project" onclick="onClickProject('project3')">
+            <img src="images/william minerva.jpg" alt="Owl mascot">
+        </button>
+        
+        <button class="project" onclick="onClickProject('project4')">
+            <img src="images/pokedex gif.gif" alt="Pokedex">
+        </button>
+
+        <!-- Modal positioned inside c2 container -->
+        <div class="modal" id="modalContainer">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="modalTitle">Project Title</h2>
+                    <button class="close-btn" onclick="closeModal()">&times;</button>
+                </div>
+                <div class="modal-body" id="modalBody">
+                    <!-- Content will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
