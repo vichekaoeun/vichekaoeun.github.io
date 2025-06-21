@@ -10,7 +10,7 @@ function onClickProject(projectId) {
       githubLink.href = "https://github.com/vichekaoeun/scango-lite"
       githubLink.style.display = "flex"
       modalBody.innerHTML =
-      `
+        `
       <div>
       <p>A lightweight static analyzer for Go security issues.</p>
       <br>
@@ -100,6 +100,55 @@ function onClickProject(projectId) {
             allowfullscreen class="youtube-video">
           </iframe>
           <br>
+          <h1>What it does:</h1>
+          <p>
+            Users can search for specific moments within videos from our video library by typing in keywords and it will return
+            the most relevant clips based on the search query, along with timestamps.
+          </p>
+          <h1>How it works:</h1>
+          <p> Users can upload videos, which are processed to extract both visual and textual embeddings. These embeddings are stored in a vector database (Convex).
+           Users can then search using natural language, and the system retrieves the most relevant video moments based on semantic similarity.
+          </p>
+          <h2>1. Video Processing</h2>
+          <p>
+            <ol>
+              <li><strong>Download Videos:</strong> download the video from Convex</li>
+              <li><strong>Extract Audio:</strong> using ffmpeg to extract audio from the video</li>
+              <li><strong>Split Audio:</strong> splits the audio into 10-second chunks</li>
+              <li><strong>Transcribe Audio:</strong> using whisper to transcribe each audio chunk</li>
+              <li><strong>Embed Text and Video frames:</strong> through a transformer, we embed text and frames</li>
+              <li><strong>Upload embeddings:</strong> both text and audio are uploaded to Convex in frameEmbedding table</li>
+            </ol>
+          </p>
+          <img src="images/idetic-video.jpg" alt="idetic video processing">
+          <h2>2. Search Pipeline</h2>
+          <p>
+            <ol>
+              <li><strong>Submits search query:</strong> submits a natural language query</li>
+              <li><strong>Embed the search query:</strong> query text is embedded into vectors using the same transformer (capturing the semantic meaning)</li>
+              <li><strong>Vector search:</strong> on API call, Convex performs a vector similarity search to frameEmbedding table (contains transcribe chunk and frames)</li>
+              <li><strong>Retrieve matching:</strong> Convex returns a list of:
+                <ul>
+                  <li>video ID</li>
+                  <li>timestamp (start/end)</li>
+                  <li>similarity score</li>
+                </ul>
+              </li>
+              <li><strong>Return result to frontend:</strong> displays matching video moments</li>
+            </ol>
+          </p>
+          <img src="images/search-pipeline.jpg" alt="idetic search pipeline">
+          <h2>3. Similarity Score</h2>
+          <p>
+            The similarity score measures how closely the search query matches each stored embeddings (from video frames or transcribed text).
+            <h3>How the score is calculated</h3>
+            <ul>
+              <li><strong>Embeddings:</strong> both search query and video moment are represented as vectors</li>
+              <li><strong>Similarity metric:</strong> using cosine similarity, it measures the angle between two vectors giving a score between -1 and 1 (0 is unrelated)</li>
+              <li><strong>Rankings:</strong> compares the similary score between query embedding and every stored embedding</li>
+            </ul>
+          </p>
+          <img src="images/vector-similarity.webp" alt="idetic vector similarity" class="vector-image">
         </div>
         `
       break
@@ -108,7 +157,7 @@ function onClickProject(projectId) {
       githubLink.href = "https://github.com/vichekaoeun/GenesisAI--AniDex"
       githubLink.style.display = "flex"
       modalBody.innerHTML =
-      `
+        `
       <div>
         <p>A photo-to-art wildlife discovery platform</p>
         <br>
@@ -118,6 +167,37 @@ function onClickProject(projectId) {
           allowfullscreen class="youtube-video">
         </iframe>
         <br>
+        <h1>What it does:</h1>
+        <p>
+          Users can upload a photo of an animal, and the platform will generate an pixel-art representation of that animal
+          using Dall-E, storing it inside a library where users can converse with a chatbot specialist about that animal.
+        </p>
+        <h1>How it works:</h1>
+        <h2>1. Frontend</h2>
+        <p>
+          <ol>
+            <li><strong>Camera Access & Photo capture:</strong> using the browser's API to access the device camera and display the video stream</li>
+            <li><strong>Location Capture:</strong> captures the user's latitude and longtitude when the camera page is loaded using navigator.</li>
+            <li><strong>Sending data to backend:</strong> through a POST request, the following data is sent: Base64-encoded image string, user's coordinates and timestamp</li>
+          </ol>
+          To avoid issues with binary file uploads, we used Base64-encoded strings and downscale the image to 200x200 pixels before sending it to the backend.
+        </p>
+        <h2>2. Backend</h2>
+        <p>
+          <ol>
+            <li><strong>Receive data:</strong> we setup endpoint saveImage for receiving imageBase64, longtitude/latitude and timestamp</li>
+            <li><strong>Image Processing:</strong> extract Base64 image data, send it to Gemini for animal info classification</li>
+            <li><strong>Generate Pixel Art:</strong> generate a pixel-art sprite using OpenAI DALL-E</li>
+            <li><strong>Store Data:</strong> stores data into firestore</li>
+          </ol>
+        </p>
+        <h2>3. Chatbot</h2>
+        <p>
+          The chatbot implementation is very basic, we setup an endpoint for receiving user queries, then send it to Gemini to generate a response and display
+           the response in the chat window.
+        </p>
+        <h1>Diagram:</h1>
+        <img src="images/anidex-diagram.jpg" alt="anidex diagram" class="anidex-diagram">
       </div>
       `
       break

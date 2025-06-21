@@ -31,7 +31,8 @@
 
 .project {
   height: auto;
-  width: 700px; /* Default desktop width */
+  width: 700px;
+  /* Default desktop width */
   aspect-ratio: 1;
   transition: transform 0.2s ease;
 }
@@ -72,7 +73,8 @@ button {
   background: white;
   position: relative;
   width: 100%;
-  min-height: 100%; /* Changed from height: 100% to min-height */
+  min-height: 100%;
+  /* Changed from height: 100% to min-height */
   padding: 20px;
   box-sizing: border-box;
   transform: translateY(20px);
@@ -121,13 +123,16 @@ button {
 .modal-body {
   color: #555;
   line-height: 1.6;
-  font-size: 1.2rem; /* Make modal body text bigger */
-  padding-bottom: 20px; /* Add bottom padding */
+  font-size: 1.2rem;
+  /* Make modal body text bigger */
+  padding-bottom: 20px;
+  /* Add bottom padding */
 }
 
 /* Fix spacing issues in modal content */
-.modal-body > div {
-  margin: 0; /* Remove default margins */
+.modal-body>div {
+  margin: 0;
+  /* Remove default margins */
 }
 
 .modal-body h1 {
@@ -172,7 +177,8 @@ button {
 
 @media (max-width: 900px) {
   .project {
-    width: 350px; /* Even smaller on tablets */
+    width: 350px;
+    /* Even smaller on tablets */
   }
 
   .c1 {
@@ -182,12 +188,14 @@ button {
 
 @media (max-width: 768px) {
   .container {
-    flex-direction: column; /* Stack vertically on mobile */
+    flex-direction: column;
+    /* Stack vertically on mobile */
   }
 
   .c1 {
     width: 100%;
-    position: static; /* Remove sticky on mobile */
+    position: static;
+    /* Remove sticky on mobile */
     margin: 10px 0;
   }
 
@@ -241,22 +249,32 @@ span {
   font-size: 0.9rem;
 }
 
-.socials{
+.socials {
   margin-top: 50px;
 }
 
-a{
+a {
   all: unset;
   cursor: pointer;
 }
 
-.demo-video{
+.demo-video {
   width: 100%;
   height: 100%;
 }
 
-.youtube-video{
+.youtube-video {
   width: 100%;
   height: auto;
   aspect-ratio: 16/9;
+}
+
+.vector-image {
+  height: 500px;
+  width: auto;
+}
+
+.anidex-diagram {
+  width: 100%;
+  max-height: 700px;
 }
