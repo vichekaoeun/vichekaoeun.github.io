@@ -60,7 +60,7 @@ button {
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
   z-index: 10;
-  overflow-y: auto; /* Add scroll if content overflows */
+  overflow-y: auto;
 }
 
 .modal.active {
@@ -93,7 +93,7 @@ button {
 }
 
 .modal-title {
-  font-size: 2.2rem; /* Make modal title bigger */
+  font-size: 2.2reml;
   font-weight: 600;
   color: #333;
 }
@@ -157,17 +157,16 @@ button {
 }
 
 .modal-body br {
-  line-height: 0.5; /* Reduce excessive line breaks */
+  line-height: 0.5;
 }
 
-/* Responsive breakpoints */
 @media (max-width: 1200px) {
   .project {
-    width: 500px; /* Smaller on medium screens */
+    width: 500px;
   }
 
   .c1 {
-    width: 400px; /* Adjust sidebar width */
+    width: 400px;
   }
 }
 
@@ -197,49 +196,49 @@ button {
   }
 
   .project {
-    width: calc(50% - 5px); /* Two projects per row on mobile */
+    width: calc(50% - 5px);
     max-width: 300px;
   }
 }
 
 @media (max-width: 480px) {
   .project {
-    width: 100%; /* Single column on very small screens */
+    width: 100%;
     max-width: 250px;
   }
 
   .modal-content {
-    padding: 15px; /* Less padding on small screens */
+    padding: 15px;
   }
 
   .modal-title {
-    font-size: 1.5rem; /* Smaller title on mobile */
+    font-size: 1.5rem;
   }
 }
 
 .span-h1 {
-  font-size: 1.2rem; /* Use font-size instead of text-size-adjust */
+  font-size: 1.2rem;
 }
 
 h1 {
   font-family: "PT Sans", sans-serif;
   font-weight: 500;
   font-style: normal;
-  font-size: 2.5rem; /* Make h1 bigger */
+  font-size: 2.5rem;
 }
 
 p {
   font-family: "PT Sans", sans-serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 1.1rem; /* Make paragraphs bigger */
+  font-size: 1.1rem;
 }
 
 span {
   font-family: "PT Sans", sans-serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 0.9rem; /* Make spans bigger */
+  font-size: 0.9rem;
 }
 
 .socials{
@@ -254,4 +253,10 @@ a{
 .demo-video{
   width: 100%;
   height: 100%;
+}
+
+.youtube-video{
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
 }
