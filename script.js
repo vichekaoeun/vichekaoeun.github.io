@@ -105,10 +105,21 @@ function onClickProject(projectId) {
       break
     case "project4":
       modalTitle.textContent = "Anidex"
-      githubLink.href = "https://github.com/vichekaoeun/anidex"
+      githubLink.href = "https://github.com/vichekaoeun/GenesisAI--AniDex"
       githubLink.style.display = "flex"
       modalBody.innerHTML =
-        "<p>A photo-to-art wildlife discovery platform</p>"
+      `
+      <div>
+        <p>A photo-to-art wildlife discovery platform</p>
+        <br>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/oabOsslwrB4" 
+          title="YouTube video player" frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen class="youtube-video">
+        </iframe>
+        <br>
+      </div>
+      `
       break
   }
 
