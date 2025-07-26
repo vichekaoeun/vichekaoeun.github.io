@@ -88,7 +88,7 @@ function onClickProject(projectId) {
           <p>Real-time network monitoring tool for tracking latency and packet loss across multiple targets</p>
           <br>
           <video controls class="demo-video">
-            <source src="images/netpulse-demo-video.mp4" type="video/mp4">
+            <source src="images/netpulse-demo.mp4" type="video/mp4">
             Your browser doesn't support the video tag.
           </video>
           <br>
