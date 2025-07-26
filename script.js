@@ -79,11 +79,42 @@ function onClickProject(projectId) {
       `
       break
     case "project2":
-      modalTitle.textContent = "netpulse (work-in-progress)"
+      modalTitle.textContent = "netpulse"
       githubLink.href = "https://github.com/vichekaoeun/netpulse"
       githubLink.style.display = "flex"
       modalBody.innerHTML =
-        "<p>Real-time network monitoring tool for tracking latency and packet loss across multiple targets</p>"
+        `
+        <div>
+          <p>Real-time network monitoring tool for tracking latency and packet loss across multiple targets</p>
+          <br>
+          <video controls class="demo-video">
+            <source src="images/netpulse-demo-video.mp4" type="video/mp4">
+            Your browser doesn't support the video tag.
+          </video>
+          <br>
+          <h1>What it does:</h1>
+          <p>
+            Through running the netpulse script, it will ping different targets (IP addresses) and
+            display the results in real-time, showing latency, packet loss, and jitter.
+          </p>
+          <h2>Daemon mode</h2>
+          <p>
+            You can also run netpulse in daemon mode, which will continue monitoring the network in the background.
+            Within this mode, it will log the results to a file located at /dev/null
+          </p>
+          <h1>How it works:</h1>
+          <p>
+            It is entirely written in C.
+            <ul>
+              <li><strong>Sockets:</strong> uses raw sockets to send ICMP echo requests (pings) to the target IP addresses including
+              packet creation, sending, receiving and checksum calculation
+              </li>
+              <li><strong>Thread & Analytics:</strong> each target IP, a pthread is created entering an infinite loop sending ping every 5s
+              then a function for receiving will capture it and perform RTT calculation and if no response within a timeout then it counts as a loss</li>
+              <li><strong>Real-time display:</strong> using ncurses, it displays the results in a table format in the terminal, by pulling from the statistic assessment functions</li>
+          </p>
+        </div>
+        `
       break
     case "project3":
       modalTitle.textContent = "Idetic"
