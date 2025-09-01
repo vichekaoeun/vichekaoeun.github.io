@@ -232,6 +232,87 @@ function onClickProject(projectId) {
       </div>
       `
       break
+    case "project5":
+      modalTitle.textContent = "Sentinel"
+      githubLink.href = "https://github.com/vichekaoeun/sentinel"
+      githubLink.style.display = "flex"
+      modalBody.innerHTML =
+        `
+      <div>
+        <p>A comprehensive trade capture and risk management system for financial institutions</p>
+        <br>
+        <video controls class="demo-video">
+          <source src="images/sentinel-demo.mp4" type="video/mp4">
+          Your browser doesn't support the video tag.
+        </video>
+        <br>
+        <h1>What it does:</h1>
+        <p>
+          Sentinel enables financial institutions to monitor trading activities, calculate real-time risk metrics, and generate 
+          alerts when risk limits are breached. It provides traders and risk managers with immediate visibility into trading 
+          positions and risk exposure through a real-time dashboard.
+        </p>
+        <h1>How it works:</h1>
+        <h2>1. Architecture</h2>
+        <p>
+          The system follows a microservices-inspired architecture with clear separation of concerns, 
+          utilizing event-driven design patterns for real-time processing:
+          <ul>
+            <li><strong>Backend (Java/Spring):</strong> Core services handle trade processing, risk calculations, and alert generation</li>
+            <li><strong>Frontend (React):</strong> Real-time dashboard displays positions, alerts, and market data</li>
+            <li><strong>Messaging (Kafka):</strong> Event streaming for decoupled, scalable trade processing</li>
+            <li><strong>Market Data:</strong> Integration with Finnhub API for real-time price data</li>
+          </ul>
+        </p>
+        <h2>2. Trade Processing Flow</h2>
+        <p>
+          <ol>
+            <li><strong>Trade Capture:</strong> REST API receives trade details via POST request</li>
+            <li><strong>Event Publishing:</strong> Trade published to Kafka topic for processing</li>
+            <li><strong>Risk Evaluation:</strong> Multiple risk metrics calculated (position limits, P&L, exposure)</li>
+            <li><strong>Alert Generation:</strong> Limit breaches trigger immediate alerts via Kafka</li>
+            <li><strong>Real-time Updates:</strong> Dashboard receives updates via WebSocket connections</li>
+          </ol>
+        </p>
+        <h2>3. Risk Management Features</h2>
+        <p>
+          <ul>
+            <li><strong>Position Limits:</strong> Maximum position size per trading symbol</li>
+            <li><strong>P&L Stop Loss:</strong> Daily loss threshold monitoring with alerts</li>
+            <li><strong>Counterparty Exposure:</strong> Tracks and limits exposure to trading counterparties</li>
+            <li><strong>Concentration Risk:</strong> Prevents overexposure to any single instrument</li>
+            <li><strong>Alert Severity Levels:</strong> LOW, MEDIUM, HIGH, CRITICAL with real-time notifications</li>
+          </ul>
+        </p>
+        <h2>4. Technology Stack</h2>
+        <p>
+          <strong>Backend:</strong>
+          <ul>
+            <li>Java 21 with Spring Boot 3.5.4</li>
+            <li>Spring Data JPA, Spring Web, Spring WebSocket</li>
+            <li>Spring Kafka for event streaming</li>
+            <li>H2 Database for development (configurable for production databases)</li>
+          </ul>
+          
+          <strong>Frontend:</strong>
+          <ul>
+            <li>React 18.2.0 with Tailwind CSS</li>
+            <li>Recharts for data visualization</li>
+            <li>STOMP over SockJS for WebSocket communication</li>
+            <li>Axios for API communication</li>
+          </ul>
+          
+          <strong>Infrastructure:</strong>
+          <ul>
+            <li>Apache Kafka for event streaming</li>
+            <li>Docker Compose for containerization</li>
+          </ul>
+        </p>
+        <h1>Diagram:</h1>
+        <img src="images/sentinel-diagram.png" alt="Sentinel Architecture" class="architecture-diagram">
+      </div>
+      `
+      break
   }
 
   modal.classList.add("active")

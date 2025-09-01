@@ -278,3 +278,17 @@ a {
   width: 100%;
   max-height: 700px;
 }
+
+.project img[alt="Sentinel"] {
+  max-width: 65%;
+  object-fit: contain;
+  margin: auto;
+  display: block;
+}
+
+.architecture-diagram {
+  width: 80%;
+  max-height: 400px;
+  display: block;
+  margin: 0 auto;
+}
