@@ -373,14 +373,35 @@ window.addEventListener('popstate', function(event) {
 
 // Handle direct URL access on page load
 window.addEventListener('DOMContentLoaded', function() {
-  const path = window.location.pathname;
-  
-  if (path !== '/') {
-    const route = path.replace('/', '');
-    const projectId = routeToProject[route];
+  // Check for GitHub Pages redirect from 404.html
+  if (sessionStorage.redirect) {
+    const redirectUrl = new URL(sessionStorage.redirect);
+    const path = redirectUrl.pathname;
+    delete sessionStorage.redirect;
     
-    if (projectId) {
-      showProject(projectId);
+    // Update the URL to the intended path
+    window.history.replaceState({}, '', path);
+    
+    // Handle the route
+    if (path !== '/') {
+      const route = path.replace('/', '');
+      const projectId = routeToProject[route];
+      
+      if (projectId) {
+        showProject(projectId);
+      }
+    }
+  } else {
+    // Normal page load handling
+    const path = window.location.pathname;
+    
+    if (path !== '/') {
+      const route = path.replace('/', '');
+      const projectId = routeToProject[route];
+      
+      if (projectId) {
+        showProject(projectId);
+      }
     }
   }
 });
