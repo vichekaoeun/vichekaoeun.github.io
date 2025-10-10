@@ -369,35 +369,29 @@ window.addEventListener('popstate', function(event) {
   }
 });
 
-window.addEventListener('DOMContentLoaded', function() {
-  if (sessionStorage.redirect) {
-    const path = sessionStorage.redirect;
-    delete sessionStorage.redirect;
+function handleRoute() {
+  let path;
+  
+  // Check if we have a hash (from 404 redirect)
+  if (window.location.hash) {
+    path = window.location.hash.substring(1); // Remove the #
     
-    console.log('Redirected from 404, path:', path);
-    
+    // Clean up URL - replace hash with actual path
     window.history.replaceState({}, '', path);
-    
-    if (path !== '/') {
-      const route = path.replace('/', '');
-      const projectId = routeToProject[route];
-      
-      console.log('Route:', route, 'ProjectId:', projectId);
-      
-      if (projectId) {
-        showProject(projectId);
-      }
-    }
   } else {
-    const path = window.location.pathname;
+    // Normal path handling
+    path = window.location.pathname;
+  }
+  
+  if (path && path !== '/') {
+    const route = path.replace('/', '');
+    const projectId = routeToProject[route];
     
-    if (path !== '/') {
-      const route = path.replace('/', '');
-      const projectId = routeToProject[route];
-      
-      if (projectId) {
-        showProject(projectId);
-      }
+    if (projectId) {
+      showProject(projectId);
     }
   }
-});
+}
+
+window.addEventListener('DOMContentLoaded', handleRoute);
+window.addEventListener('hashchange', handleRoute);

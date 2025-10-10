@@ -4,8 +4,15 @@
     <meta charset="utf-8">
     <title>vicdoesthings</title>
     <script>
-        sessionStorage.redirect = location.pathname;
-        window.location.href = '/';
+        // GitHub Pages SPA redirect using hash
+        var path = window.location.pathname;
+        
+        // Convert path to hash and redirect to home
+        if (path && path !== '/') {
+            window.location.replace('/#' + path);
+        } else {
+            window.location.replace('/');
+        }
     </script>
 </head>
 <body>
