@@ -1,4 +1,29 @@
+const projectRoutes = {
+  'project1': '1',
+  'project2': '2', 
+  'project3': '3',
+  'project4': '4',
+  'project5': '5'
+};
+
+const routeToProject = {
+  '1': 'project1',
+  '2': 'project2',
+  '3': 'project3', 
+  '4': 'project4',
+  '5': 'project5'
+};
+
 function onClickProject(projectId) {
+  const route = projectRoutes[projectId];
+  if (route) {
+    window.history.pushState({ projectId }, '', `/${route}`);
+  }
+  
+  showProject(projectId);
+}
+
+function showProject(projectId) {
   const modal = document.getElementById("modalContainer")
   const modalTitle = document.getElementById("modalTitle")
   const modalBody = document.getElementById("modalBody")
@@ -325,4 +350,37 @@ function onClickProject(projectId) {
 function closeModal() {
   const modal = document.getElementById("modalContainer")
   modal.classList.remove("active")
+  
+  // Update URL to home when closing modal
+  window.history.pushState({}, '', '/');
 }
+
+// Handle browser back/forward navigation
+window.addEventListener('popstate', function(event) {
+  const path = window.location.pathname;
+  
+  if (path === '/') {
+    closeModal();
+  } else {
+    const route = path.replace('/', '');
+    const projectId = routeToProject[route];
+    
+    if (projectId) {
+      showProject(projectId);
+    }
+  }
+});
+
+// Handle direct URL access on page load
+window.addEventListener('DOMContentLoaded', function() {
+  const path = window.location.pathname;
+  
+  if (path !== '/') {
+    const route = path.replace('/', '');
+    const projectId = routeToProject[route];
+    
+    if (projectId) {
+      showProject(projectId);
+    }
+  }
+});
