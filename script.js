@@ -351,11 +351,9 @@ function closeModal() {
   const modal = document.getElementById("modalContainer")
   modal.classList.remove("active")
   
-  // Update URL to home when closing modal
   window.history.pushState({}, '', '/');
 }
 
-// Handle browser back/forward navigation
 window.addEventListener('popstate', function(event) {
   const path = window.location.pathname;
   
@@ -371,28 +369,26 @@ window.addEventListener('popstate', function(event) {
   }
 });
 
-// Handle direct URL access on page load
 window.addEventListener('DOMContentLoaded', function() {
-  // Check for GitHub Pages redirect from 404.html
   if (sessionStorage.redirect) {
-    const redirectUrl = new URL(sessionStorage.redirect);
-    const path = redirectUrl.pathname;
+    const path = sessionStorage.redirect;
     delete sessionStorage.redirect;
     
-    // Update the URL to the intended path
+    console.log('Redirected from 404, path:', path);
+    
     window.history.replaceState({}, '', path);
     
-    // Handle the route
     if (path !== '/') {
       const route = path.replace('/', '');
       const projectId = routeToProject[route];
+      
+      console.log('Route:', route, 'ProjectId:', projectId);
       
       if (projectId) {
         showProject(projectId);
       }
     }
   } else {
-    // Normal page load handling
     const path = window.location.pathname;
     
     if (path !== '/') {
