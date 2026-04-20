@@ -69,7 +69,7 @@ const About = () => (
     </div>
 
     <div className="stat-row">
-      <div className="stat-card"><div className="k">Status</div><div className="v">Shipping</div></div>
+      <div className="stat-card"><div className="k">Status</div><div className="v">Building</div></div>
       <div className="stat-card"><div className="k">Focus</div><div className="v">Systems + Ops</div></div>
       <div className="stat-card"><div className="k">Based</div><div className="v">Toronto, ON</div></div>
     </div>

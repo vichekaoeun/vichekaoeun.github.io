@@ -59,7 +59,7 @@ const Menu = ({ items, activeIndex, onSelect }) => {
     <aside className="sidebar rainbow-side" aria-label="Main menu">
       <div className="menu-head">
         <span className="chev">✦</span>
-        <span>Tune In / Main Menu</span>
+        <span>Main Menu</span>
         <span style={{ marginLeft: "auto" }} className="blink">●</span>
       </div>
 
@@ -105,7 +105,7 @@ const Menu = ({ items, activeIndex, onSelect }) => {
       >
         <span style={{ color: "var(--hot)", fontWeight: 700 }}>{activeIndex + 1}</span>
         {" / "}
-        {items.length} · Side A
+        {items.length}
       </div>
     </aside>
   );

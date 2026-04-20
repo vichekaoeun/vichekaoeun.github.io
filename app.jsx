@@ -1,6 +1,6 @@
 // Main app
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-  "accent": "#ff6aa2",
+  "accent": "#6a80ff",
   "bg": "#f7efde",
   "ink": "#2a1a3e",
   "wobble": 1,
@@ -96,11 +96,6 @@ const App = () => {
 
       <div className="grain" />
 
-      {/* top bar */}
-      <div className="topbar">
-        <div><span className="dot" />{window.SITE.handle} · PERSONAL RADIO · STATION 108.3</div>
-        <div className="right">{window.SITE.codeName || "IN TRANSIT"}</div>
-      </div>
 
       {/* main grid */}
       <div className="main">
@@ -144,12 +139,6 @@ const App = () => {
         <span /><span /><span />
       </button>
 
-      {/* mood footer */}
-      <div className="mood">
-        <div className="amt">☽ <b>∞</b></div>
-        <div className="lbl">Good vibrations</div>
-      </div>
-
       {/* bottom hints */}
       <div className="hints">
         <div className="group">
@@ -158,7 +147,6 @@ const App = () => {
           <span className="key"><b>1-5</b> JUMP</span>
         </div>
         <div className="group">
-          <span style={{opacity:.65}}>{window.SITE.name} · {new Date().getFullYear()} · Side A</span>
         </div>
       </div>
 

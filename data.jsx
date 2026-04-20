@@ -3,7 +3,6 @@ const SITE = {
   handle: "VICHEKA.OEUN",
   name: "Vicheka Oeun",
   subtitle: "Builder / Security-leaning Engineer",
-  codeName: "CODE NAME — WANDERER",
   location: "EARTH // IRL",
 };
 
@@ -13,7 +12,7 @@ const SECTIONS = [
     label: "About",
     sub: "Profile",
     mark: "A",
-    kicker: "Dossier / 01",
+    kicker: "Self / 01",
     title: ["Hey, I'm ", "Vic", "."],
     render: "about",
   },
@@ -22,25 +21,25 @@ const SECTIONS = [
     label: "Experience",
     sub: "Logs",
     mark: "E",
-    kicker: "Mission Log / 04",
+    kicker: "Work History / 02",
     title: ["Work", " History", "."],
     render: "experience",
   },
   {
     id: "projects",
     label: "Projects",
-    sub: "Heists",
+    sub: "Works",
     mark: "P",
-    kicker: "Current Targets / 03",
+    kicker: "Curated Work / 03",
     title: ["Selected", " Work", "."],
     render: "projects",
   },
   {
     id: "skills",
-    label: "Stats",
+    label: "Skills",
     sub: "Abilities",
     mark: "S",
-    kicker: "Ability Set / 02",
+    kicker: "Ability / 04",
     title: ["Skills &", " Stack", "."],
     render: "skills",
   },
@@ -49,16 +48,16 @@ const SECTIONS = [
     label: "Contact",
     sub: "Request",
     mark: "C",
-    kicker: "Establish Contact / 05",
+    kicker: "Contacts / 05",
     title: ["Let's", " Talk", "."],
     render: "contact",
   },
 ];
 
 const ABOUT = [
-  "I build things that live at the overlap of systems engineering and software engineering i.e CLIs, scanners, and small tools that make life less painful for the people who have to run production.",
-  "Lately I've been into Machine Learning, Go, and anything that lets me write a tool once and forget about it. I like projects with a clear shape: a real input, a real output, a small blast radius.",
-  "Outside of that: painting, JRPGs, films, books.",
+  "I build things that live at the overlap of systems engineering and software engineering i.e diagnostics, automation, and developer tools that make life less painful for the people who have to run production.",
+  "",
+  "Outside of that: JRPGs, films, books.",
 ];
 
 const SKILLS = [
