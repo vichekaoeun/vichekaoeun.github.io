@@ -63,7 +63,7 @@ const ABOUT = [
 
 const SKILLS = [
   { group: "Languages", items: ["Go", "TypeScript", "Python", "C#", "Bash", "SQL"], acid: true },
-  { group: "Systems & Infra", items: ["Linux", "Docker", "Jenkins", "MS SQL Server", "WireShark", "Apache Kafka"] },
+  { group: "Systems & Infra", items: ["Linux", "Docker", "Jenkins", "MS SQL Server", "WireShark", "Apache Kafka", "AWS DynamoDB", "AWS S3"] },
   { group: "Frontend / Backend", items: ["React", "Angular", ".NET", "xUnit", "Jasmine", "Playwright"] },
   { group: "Concepts", items: ["OOP", "SOLID", "Release Engineering", "Unit Testing"], acid: true },
 ];
