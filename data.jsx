@@ -1,203 +1,148 @@
-// Content data for the site
+// Content for the site
 const SITE = {
-  handle: "VICHEKA.OEUN",
   name: "Vicheka Oeun",
-  subtitle: "Builder / Security-leaning Engineer",
-  location: "EARTH // IRL",
+  handle: "vic",
+  pronunciation: "/vee-cheh-kah/",
+  blurb: [
+    "I'm a computer science student at Toronto Metropolitan University, building things at the overlap of systems and software engineering, diagnostics, automation, and developer tools that make life less painful for the people running production.",
+    "This summer (2026) I'll be a Site Reliability Engineering intern on the IBM Maximo team, working on observability and reliability for their enterprise asset management suite. Before that, I spent a year at SOTI on the VPN team, shipping multi-server, per-app, split-tunnel and SSID-aware support to thousands of enterprise devices.",
+    "Outside of work I read a lot, watch films, and play long JRPGs. If you'd like to chat, about systems, security, building open source, or anything else, feel free to {EMAIL}. You can also find me on {GITHUB} and {LINKEDIN}."
+  ],
 };
-
-const SECTIONS = [
-  {
-    id: "about",
-    label: "About",
-    sub: "Profile",
-    mark: "A",
-    kicker: "Self / 01",
-    title: ["Hey, I'm ", "Vic", "."],
-    render: "about",
-  },
-  {
-    id: "experience",
-    label: "Experience",
-    sub: "Logs",
-    mark: "E",
-    kicker: "Work History / 02",
-    title: ["Work", " History", "."],
-    render: "experience",
-  },
-  {
-    id: "projects",
-    label: "Projects",
-    sub: "Works",
-    mark: "P",
-    kicker: "Curated Work / 03",
-    title: ["Selected", " Work", "."],
-    render: "projects",
-  },
-  {
-    id: "skills",
-    label: "Skills",
-    sub: "Abilities",
-    mark: "S",
-    kicker: "Ability / 04",
-    title: ["Skills &", " Stack", "."],
-    render: "skills",
-  },
-  {
-    id: "contact",
-    label: "Contact",
-    sub: "Request",
-    mark: "C",
-    kicker: "Contacts / 05",
-    title: ["Let's", " Talk", "."],
-    render: "contact",
-  },
-];
-
-const ABOUT = [
-  "I build things that live at the overlap of systems engineering and software engineering i.e diagnostics, automation, and developer tools that make life less painful for the people who have to run production.",
-  "",
-  "Outside of that: JRPGs, films, books.",
-];
-
-const SKILLS = [
-  { group: "Languages", items: ["Go", "TypeScript", "Python", "C#", "Bash", "SQL"], acid: true },
-  { group: "Systems & Infra", items: ["Linux", "Docker", "Jenkins", "MS SQL Server", "WireShark", "Apache Kafka", "AWS DynamoDB", "AWS S3"] },
-  { group: "Frontend / Backend", items: ["React", "Angular", ".NET", "xUnit", "Jasmine", "Playwright"] },
-  { group: "Concepts", items: ["OOP", "SOLID", "Release Engineering", "Unit Testing"], acid: true },
-];
 
 const PROJECTS = [
   {
-    num: "01",
-    name: "SCANGO-LITE",
-    sub: "Static analyzer for Go, the solo edition",
-    desc: "A lightweight static analyzer for Go security issues.",
+    name: "kv-store",
+    year: "2026",
+    role: "solo / Go",
+    tags: ["GO", "SYSTEMS", "DATABASES", "WAL"],
+    href: "https://github.com/vichekaoeun/kv-store-scratch",
+    demo: null, // no live demo — terminal-only
+    thumb: { kind: "kv" },
+    blurb: [
+      "A persistent, concurrent key-value store in Go. Speaks an inline text protocol over TCP (compatible with `redis-cli -p 6380`) and supports SET, GET, and DEL with optional TTL.",
+      "Writes are appended to a write-ahead log before mutating the in-memory map, making crashes recoverable by replay. A background compactor periodically snapshots full state and truncates the WAL, bounding recovery time regardless of uptime; atomic rename ensures a mid-compaction crash leaves the previous snapshot intact.",
+      "Concurrency is handled with sync.RWMutex over a hash map. The server flushes responses only when its read buffer empties, allowing pipelined clients to receive all responses in a single syscall. At pipeline depth 16, GET throughput is ~2.5× higher; at depth 64, it exceeds Redis 8.6's baseline on the same machine."
+    ],
+    links: [
+      { label: "Repo", href: "https://github.com/vichekaoeun/kv-store-scratch" },
+    ],
+  },
+  {
+    name: "Lupin",
+    year: "2026",
+    role: "solo / TS, AWS",
+    tags: ["NEXT.JS", "AWS", "CLAUDE", "DYNAMODB"],
+    href: "https://github.com/vichekaoeun/lupin",
+    demo: "https://lupin-kappa.vercel.app/",
+    thumb: { kind: "lupin" },
+    blurb: [
+      "A Japanese vocabulary app that generates complete flashcards from a single word. Input a word and a cultural theme — anime, gaming, manga, or others — and receive a card with reading, meaning, JLPT level, example sentences with furigana, cultural references, and a contextual dialogue, along with native audio via AWS Polly.",
+      "Cards enter an SM-2 spaced-repetition queue. After each review, recall is rated 0–5 and the next review date adjusts accordingly. Cards with repeated failures are suspended after 8 cumulative misses to keep the queue manageable.",
+      "Built on Next.js 16 with a single-table DynamoDB design and a GSI on nextReview for efficient due-card queries. Auth is AWS Cognito with JWTs in httpOnly cookies; audio is cached 24 hours; rate limiting runs in Redis with an in-process fallback for local development. Infrastructure provisioned with AWS CDK."
+    ],
+    links: [
+      { label: "Repo", href: "https://github.com/vichekaoeun/lupin" },
+    ],
+  },
+  {
+    name: "scango-lite",
+    year: "2025",
+    role: "solo / Go",
     tags: ["GO", "AST", "SECURITY", "CLI"],
     href: "https://github.com/vichekaoeun/scango-lite",
-    year: "2025",
-    runtime: "~10 MIN READ",
-    palette: ["#ff6aa2", "#ffa04b", "#ffe28a", "#a8e6c9", "#9ad6ff", "#c9b6ff"],
-    story: [
-      "Scango-lite will scan through a Go application looking for security issues like, hardcoded secrets, sql injection, unsecure http and command injection; only scanning through the current directory you're in (folders and files). "
+    demo: null,
+    thumb: { kind: "scango" },
+    blurb: [
+      "A lightweight static analyzer for Go security vulnerabilities: hardcoded secrets, SQL injection, insecure HTTP, and command injection.",
+      "Analyzes the go/ast tree directly rather than regex matching source text, providing precise line and column reporting. Each rule is isolated to its own file, making them easy to add, remove, or tune independently. Installs as a single binary via go install, outputs JSON or human-readable text, and exits non-zero on findings for clean CI integration."
     ],
-    features: [
-      { title: "AST-based scanning", body: "Walks the go/ast tree. Precise line/column reporting without regex guesswork." },
-      { title: "Pluggable rules", body: "Each check lives in its own file. Add, remove, or tune without touching the runner." },
-      { title: "Single binary", body: "`go install` and go. No services, no agents, no daemons." },
-      { title: "CI-friendly output", body: "JSON + human-readable modes. Non-zero exit on findings by default." }
+    links: [
+      { label: "Repo", href: "https://github.com/vichekaoeun/scango-lite" },
     ],
-    stack: ["Go", "go/ast", "go/parser", "Cobra"],
-    media: [
-      { type: "video", src: "site/videos/scango-lite-demo.mp4", caption: "Demo walkthrough" },
-    ],
-    links: [{ label: "Repo", href: "https://github.com/vichekaoeun/scango-lite" }]
   },
   {
-    num: "02",
-    name: "IDETIC",
-    sub: "Personal Embedded Video Vector",
-    desc: "A machine learning video-to-text search engine for clips and moments within long videos",
-    tags: ["TYPESCRIPT", "PYTHON"],
+    name: "Idetic",
+    year: "2025",
+    role: "with collaborators",
+    tags: ["TYPESCRIPT", "PYTHON", "ML", "EMBEDDINGS"],
     href: "https://github.com/vichekaoeun/idetic",
-    year: "2025",
-    runtime: "~12 MIN READ",
-    palette: ["#b47dff", "#9ad6ff", "#a8e6c9", "#ffe28a", "#ffa04b", "#ff6aa2"],
-    story: [
-      "Idetic is the answer to \"where was that bit in the video again?\", an embedding-powered search layer over personal video libraries.",
-      "It pulls audio, transcribes it, chunks by semantic sections, embeds those, and indexes them. A Next.js front lets you search in natural language and jump to the exact moment."
+    demo: "https://youtu.be/5iVqBLHySLU",
+    thumb: { kind: "idetic" },
+    blurb: [
+      "A semantic search layer for personal video libraries. Extracts audio, transcribes it, segments the transcript by semantic section, embeds each segment, and indexes the result for natural-language querying.",
+      "A Next.js front-end ranks results by semantic similarity rather than keyword matching and links each hit to the precise timestamp in the source video. Transcription and embedding run entirely on-device; no video data is sent to external services."
     ],
-    features: [
-      { title: "Semantic search", body: "Query in natural language; hits rank by meaning, not keyword overlap." },
-      { title: "Timestamped jumps", body: "Every result links to the precise second in the source video." },
-      { title: "Data pipeline", body: "Transcription + embedding run locally. Your footage doesn't leave the machine." },
-      { title: "Snappy UI", body: "Next.js app streams results as they arrive instead of waiting on the full scan." }
+    links: [
+      { label: "Repo", href: "https://github.com/vichekaoeun/idetic" },
     ],
-    stack: ["TypeScript", "Next.js", "Python", "FastAPI", "PyTorch", "OpenCV"],
-    media: [
-      { type: "youtube", id: "5iVqBLHySLU", caption: "Demo walkthrough" },
-    ],
-    links: [{ label: "Repo", href: "https://github.com/vichekaoeun/idetic" }]
   },
   {
-    num: "03",
-    name: "SENTINEL",
-    sub: "Watchful, not noisy",
-    desc: "A comprehensive trade capture and risk management system for financial institutions.",
-    tags: ["MONITORING", "OBSERVABILITY", "JAVA"],
+    name: "Sentinel",
+    year: "2024",
+    role: "solo / Java, React",
+    tags: ["JAVA", "SPRING", "KAFKA", "REACT"],
     href: "https://github.com/vichekaoeun/sentinel",
-    year: "2024",
-    runtime: "~8 MIN READ",
-    palette: ["#a8e6c9", "#9ad6ff", "#c9b6ff", "#ffb3c7", "#ffc4a3", "#ffe28a"],
-    story: [
-      "Sentinel enables financial institutions to monitor trading activities, calculate real-time risk metrics, and generate alerts when risk limits are breached. It provides traders and risk managers with immediate visibility into trading positions and risk exposure through a real-time dashboard. "
+    demo: null,
+    thumb: { kind: "sentinel" },
+    blurb: [
+      "A trade capture and risk monitoring system for financial institutions. Trades publish to a Kafka topic; a risk engine consumes them asynchronously, computes real-time exposure metrics, and pushes alerts and position updates to a React dashboard over a persistent WebSocket.",
+      "Spring Boot REST endpoints handle trade capture with full validation before events reach the queue. H2 in-memory database backs positions and P&L, allowing the system to run without external dependencies."
     ],
-    features: [
-      { title: "Kafka event streaming", body: "Trades publish to a Kafka topic; the risk engine consumes and processes them asynchronously." },
-      { title: "WebSocket push", body: "Alerts and position updates flow to the React dashboard over a persistent socket, no polling." },
-      { title: "REST trade API", body: "Spring Boot endpoints handle trade capture with full validation before events hit the queue." },
-      { title: "In-memory state", body: "H2 backs positions and P&L so the whole system spins up with zero external dependencies." }
+    links: [
+      { label: "Repo", href: "https://github.com/vichekaoeun/sentinel" },
     ],
-    media: [
-      { type: "video", src: "site/videos/sentinel-demo.mp4", caption: "Demo walkthrough" },
-    ],
-    stack: ["Java", "Spring", "React", "Kafka", "FinnHub API"],
-    links: [{ label: "Repo", href: "https://github.com/vichekaoeun/sentinel" }]
   },
   {
-    num: "04",
-    name: "NETPULSE",
-    sub: "Is it up? For real?",
-    desc: "Real-time network monitoring tool for tracking latency and packet loss across multiple targets.",
-    tags: ["NETWORKING", "SYSTEMS", "C"],
-    href: "https://github.com/vichekaoeun/netpulse",
+    name: "Netpulse",
     year: "2024",
-    runtime: "~6 MIN READ",
-    palette: ["#ffe28a", "#ffa04b", "#ff6aa2", "#b47dff", "#9ad6ff", "#a8e6c9"],
-    story: [
-      "Netpulse was born out of frustration with status pages that lie. It's a small probe + dashboard pair that pings endpoints at a honest cadence and shows the truth in real time.",
-      "The dashboard keeps the last 24 hours in memory and renders it as a wall of tiny heartbeats, glance at it, know the state."
+    role: "solo / C",
+    tags: ["C", "ICMP", "NETWORKING", "NCURSES"],
+    href: "https://github.com/vichekaoeun/netpulse",
+    demo: null,
+    thumb: { kind: "netpulse" },
+    blurb: [
+      "A network monitoring tool that crafts raw ICMP probes at the socket level without relying on system ping utilities. All targets are polled concurrently, so a slow or unresponsive host does not delay results for others.",
+      "An ncurses dashboard refreshes in place as packets return: per-target latency and loss update live, alongside a rolling 24-hour heartbeat history rendered as a compact timeline."
     ],
-    features: [
-      { title: "Raw ICMP probes", body: "Crafted at the socket level in C. No ping subprocess, no abstraction layer lying to you." },
-      { title: "Live terminal UI", body: "NCURSES dashboard refreshes in place — latency and loss update as packets come back." },
-      { title: "Multi-target fanout", body: "Polls all hosts concurrently. One slow target doesn't stall the rest." },
-      { title: "Heartbeat history", body: "Rolling time-series per host. Packet loss spikes are visible at a glance, not buried in logs." }
+    links: [
+      { label: "Repo", href: "https://github.com/vichekaoeun/netpulse" },
     ],
-    stack: ["C", "ICMP", "NCURSES"],
-    media: [
-      { type: "video", src: "site/videos/netpulse-demo.mp4", caption: "Demo walkthrough" },
-    ],
-    links: [{ label: "Repo", href: "https://github.com/vichekaoeun/netpulse" }]
   },
 ];
 
 const EXPERIENCE = [
   {
-    date: "NOW",
+    when: "Current",
     role: "Site Reliability Engineer Intern",
-    co: "IBM",
-    body: "Incoming on the IBM Maximo team for Summer 2026. I'll be working on reliability and observability features for their enterprise asset management suite, with a focus on making the lives of on-call engineers less painful.",
+    org: "IBM",
+    body: "Incoming on the IBM Maximo team, reliability and observability features for their enterprise asset management suite, with a focus on making the lives of on-call engineers less painful.",
   },
   {
-    date: "05/2025 - 04/2026",
+    when: "May 2025 – Apr 2026",
     role: "Software Developer Intern",
-    co: "SOTI",
-    body: "I worked on the VPN team, improving vpn to support multiple servers and adding features for per-app, split-tunnel, ssid and internal domains support, impacting thousands of enterprise devices.",
+    org: "SOTI",
+    body: "VPN team. Extended the client to support multiple servers concurrently and shipped per-app, split-tunnel, SSID-aware and internal-domain routing features, landing on thousands of enterprise devices.",
   },
   {
-    date: "EXP 04/2027",
-    role: "Computer Science Co-op Student",
-    co: "Toronto Metropolitan University",
-    body: "I did various things including research on model-driven engineering, ran a tech-for-social-good student org and worked on a cloud native open source project.",
+    when: "Expected 04/2027",
+    role: "Computer Science Co-op",
+    org: "Toronto Metropolitan University",
+    body: "Research on model-driven engineering, ran a tech-for-social-good student org (Blueprint), and contributed to a cloud-native open-source project.",
   },
 ];
 
-const CONTACT = [
-  { label: "Email", val: "vicheka.oeun@torontomu.ca", href: "mailto:vic@example.com", acid: true },
-  { label: "GitHub", val: "vichekaoeun", href: "https://github.com/vichekaoeun" },
-  { label: "LinkedIn", val: "/in/vichekaoeun", href: "https://www.linkedin.com/in/vichekaoeun/" },
-  { label: "Location", val: "Toronto, ON", href: "#" },
-];
+const SKILLS = {
+  Languages: ["Go", "TypeScript", "Python", "C#", "Java", "Bash", "SQL"],
+  Systems: ["Linux", "Docker", "Jenkins", "Kafka", "DynamoDB", "S3", "MS SQL Server"],
+  Frameworks: ["React", "Angular", ".NET", "AWS CDK"]
+};
 
-Object.assign(window, { SITE, SECTIONS, ABOUT, SKILLS, PROJECTS, EXPERIENCE, CONTACT });
+const CONTACT = {
+  email: "vicheka.oeun@torontomu.ca",
+  github: "https://github.com/vichekaoeun",
+  linkedin: "https://www.linkedin.com/in/vichekaoeun/",
+  location: "Toronto, ON",
+};
+
+Object.assign(window, { SITE, PROJECTS, EXPERIENCE, SKILLS, CONTACT });
