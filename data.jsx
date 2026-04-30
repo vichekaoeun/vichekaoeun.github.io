@@ -1,6 +1,6 @@
 // Content for the site
 const SITE = {
-  name: "Vicheka Oeun",
+  name: "",
   handle: "vic",
   pronunciation: "/vee-cheh-kah/",
   blurb: [
