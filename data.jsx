@@ -29,7 +29,7 @@ const PROJECTS = [
     ],
   },
   {
-    name: "kv-store",
+    name: "kv-from-scratch",
     year: "2026",
     role: "solo / Go",
     tags: ["GO", "SYSTEMS", "DATABASES", "WAL"],
