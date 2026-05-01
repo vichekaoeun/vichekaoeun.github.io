@@ -150,7 +150,7 @@ const EXPERIENCE = [
 ];
 
 const SKILLS = {
-  Languages: ["Go", "TypeScript", "Python", "C#", "Java", "Bash", "SQL"],
+  Languages: ["Go", "TypeScript", "Python", "C#", "C++", "Java", "Bash", "SQL"],
   Systems: ["Linux", "Docker", "Jenkins", "Kafka", "DynamoDB", "S3", "MS SQL Server"],
   Frameworks: ["React", "Angular", ".NET", "AWS CDK"]
 };
