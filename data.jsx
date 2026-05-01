@@ -12,6 +12,23 @@ const SITE = {
 
 const PROJECTS = [
   {
+    name: "TinyInference",
+    year: "2026",
+    role: "solo / C++",
+    tags: ["C++", "LLM", "HTTP", "LOCK-FREE"],
+    href: "https://github.com/vichekaoeun/tinyinference",
+    demo: null,
+    thumb: { kind: "tinyinference" },
+    blurb: [
+      "A self-hosted LLM inference server in C++. A hand-rolled HTTP/1.1 parser, SSE streaming, and JSON live on raw sockets; llama.cpp handles GGUF model loading with configurable GPU-layer offload.",
+      "Inference and HTTP run on separate threads, decoupled by a lock-free SPSC ring buffer with cache-line-aligned atomics, tokens pipeline from generation to wire with zero mutex contention.",
+      "Per-request sampler overrides (Top-K, Top-P, temperature) plug into llama.cpp's sampler chain and fall back to server defaults when omitted, so callers can tune sampling without a model reload between requests."
+    ],
+    links: [
+      { label: "Repo", href: "https://github.com/vichekaoeun/tinyinference" },
+    ],
+  },
+  {
     name: "kv-store",
     year: "2026",
     role: "solo / Go",

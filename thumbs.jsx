@@ -1,5 +1,80 @@
 // Abstract SVG thumbnails per project — no representational AI-slop drawings,
 // just typographic / pattern marks that hint at the project's domain.
+const ThumbTinyInference = () => {
+  // 3-layer net: input(4) -> hidden(5) -> hidden(4) -> output(3)
+  const layers = [
+    [22, 38, 54, 70],
+    [16, 32, 48, 64, 80],
+    [22, 38, 54, 70],
+    [38, 54, 70],
+  ];
+  const xs = [14, 36, 58, 80];
+  // pseudo-random weights — deterministic so it doesn't reflow
+  const w = (i) => 0.15 + (((i * 53) % 17) / 17) * 0.6;
+  const edges = [];
+  for (let l = 0; l < layers.length - 1; l++) {
+    for (let i = 0; i < layers[l].length; i++) {
+      for (let j = 0; j < layers[l + 1].length; j++) {
+        edges.push({
+          x1: xs[l], y1: layers[l][i],
+          x2: xs[l + 1], y2: layers[l + 1][j],
+          op: w(l * 100 + i * 10 + j),
+        });
+      }
+    }
+  }
+  // hottest path through the net (highlighted)
+  const hot = [
+    { x1: xs[0], y1: layers[0][1], x2: xs[1], y2: layers[1][2] },
+    { x1: xs[1], y1: layers[1][2], x2: xs[2], y2: layers[2][1] },
+    { x1: xs[2], y1: layers[2][1], x2: xs[3], y2: layers[3][1] },
+  ];
+
+  return (
+    <svg className="thumb-svg" viewBox="0 0 100 100">
+      <rect width="100" height="100" fill="var(--paper)" />
+      {edges.map((e, i) => (
+        <line
+          key={i}
+          x1={e.x1} y1={e.y1} x2={e.x2} y2={e.y2}
+          stroke="var(--ink-soft)"
+          strokeWidth="0.4"
+          opacity={e.op}
+        />
+      ))}
+      {hot.map((e, i) => (
+        <line
+          key={"h" + i}
+          x1={e.x1} y1={e.y1} x2={e.x2} y2={e.y2}
+          stroke="var(--accent)"
+          strokeWidth="1"
+        />
+      ))}
+      {layers.map((col, l) =>
+        col.map((y, i) => (
+          <circle
+            key={`${l}-${i}`}
+            cx={xs[l]} cy={y} r="2.4"
+            fill="var(--paper)"
+            stroke="var(--ink-soft)"
+            strokeWidth="0.8"
+          />
+        ))
+      )}
+      {/* highlighted activations on the hot path */}
+      <circle cx={xs[0]} cy={layers[0][1]} r="2.4" fill="var(--accent)" stroke="var(--accent)" />
+      <circle cx={xs[1]} cy={layers[1][2]} r="2.4" fill="var(--accent)" stroke="var(--accent)" />
+      <circle cx={xs[2]} cy={layers[2][1]} r="2.4" fill="var(--accent)" stroke="var(--accent)" />
+      <circle cx={xs[3]} cy={layers[3][1]} r="2.4" fill="var(--accent)" stroke="var(--accent)" />
+      {/* token stream emerging from the output */}
+      <text
+        x="92" y={layers[3][1] + 1.5}
+        fontFamily="var(--mono)" fontSize="5"
+        fill="var(--accent)" textAnchor="end"
+      >→ tok</text>
+    </svg>
+  );
+};
 
 const ThumbKV = () => (
   <svg className="thumb-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -119,6 +194,7 @@ const ThumbNetpulse = () => (
 
 const Thumb = ({ kind }) => {
   switch (kind) {
+    case "tinyinference": return <ThumbTinyInference />;
     case "kv": return <ThumbKV />;
     case "lupin": return <ThumbLupin />;
     case "scango": return <ThumbScango />;
