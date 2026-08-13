@@ -4,7 +4,6 @@ description: "The personal blog of Vicheka Oeun — software, systems, books, fi
 ---
 
 <section class="home-hero">
-  <p class="eyebrow">A personal notebook, published</p>
   <p class="hero-intro">{{ site.data.content.home_intro }}</p>
 </section>
 
@@ -34,7 +33,6 @@ description: "The personal blog of Vicheka Oeun — software, systems, books, fi
 <aside class="home-note">
   <span class="note-mark" aria-hidden="true">✳</span>
   <div>
-    <p class="eyebrow">A note from Vic</p>
     <p>{{ site.data.content.home_note }}</p>
   </div>
   <a href="{{ '/about/' | relative_url }}">More about me →</a>

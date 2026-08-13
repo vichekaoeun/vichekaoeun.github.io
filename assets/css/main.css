@@ -80,7 +80,7 @@ img { display: block; max-width: 100%; }
 .eyebrow::before { content: "// "; }
 
 .home-hero { max-width: 720px; padding: 72px 0; }
-.hero-intro { max-width: 650px; margin: 14px 0 0; color: var(--muted); }
+.hero-intro { max-width: 650px; margin: 0; color: var(--muted); }
 
 .home-section { padding-bottom: 70px; }
 .section-heading {
