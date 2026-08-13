@@ -1,0 +1,29 @@
+---
+layout: default
+---
+<article class="post">
+  <header class="post-header">
+    <a class="eyebrow back-link" href="{{ '/writing/' | relative_url }}">← All writing</a>
+    <h1>{{ page.title }}</h1>
+    {% if page.description %}<p class="post-dek">{{ page.description }}</p>{% endif %}
+    <div class="post-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+      <span>·</span>
+      <span>{{ content | number_of_words | divided_by: 220 | plus: 1 }} min read</span>
+    </div>
+  </header>
+
+  {% if page.image %}
+    <figure class="post-hero">
+      <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: '' }}">
+      {% if page.image_caption %}<figcaption>{{ page.image_caption }}</figcaption>{% endif %}
+    </figure>
+  {% endif %}
+
+  <div class="prose">{{ content }}</div>
+
+  <footer class="post-end">
+    <span aria-hidden="true">✳</span>
+    <p>Thanks for reading. You can find more of my work on <a href="https://github.com/{{ site.author.github }}">GitHub.</a></p>
+  </footer>
+</article>

@@ -1,0 +1,38 @@
+title: "Vic Does Things"
+description: "Notes on software, systems, books, films, and everything in between."
+url: "https://vichekaoeun.github.io"
+baseurl: ""
+author:
+  name: "Vicheka Oeun"
+  github: "vichekaoeun"
+  linkedin: "vichekaoeun"
+
+permalink: /writing/:title/
+future: false
+
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+  - scope:
+      path: ""
+      type: projects
+    values:
+      layout: project
+  - scope:
+      path: ""
+    values:
+      layout: default
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - .DS_Store

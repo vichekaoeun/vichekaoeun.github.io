@@ -1,0 +1,107 @@
+media:
+  input: assets/images
+  output: /assets/images
+
+content:
+  - name: posts
+    label: Blog posts
+    type: collection
+    path: _posts
+    filename: "{year}-{month}-{day}-{primary}.md"
+    view:
+      fields: [title, date, category]
+      primary: title
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: Title
+        type: string
+      - name: description
+        label: Short description
+        type: text
+        description: Shown on the home page and writing archive.
+      - name: date
+        label: Publish date
+        type: date
+      - name: category
+        label: Category
+        type: string
+      - name: image
+        label: Cover image
+        type: image
+        required: false
+      - name: image_alt
+        label: Cover image description
+        type: string
+        required: false
+      - name: image_caption
+        label: Cover image caption
+        type: string
+        required: false
+      - name: body
+        label: Post
+        type: rich-text
+
+  - name: projects
+    label: Projects
+    type: collection
+    path: _projects
+    filename: "{primary}.md"
+    view:
+      fields: [title, stack, order]
+      primary: title
+      sort: [order, title]
+      default:
+        sort: order
+        order: asc
+    fields:
+      - name: title
+        label: Project name
+        type: string
+      - name: order
+        label: Display order
+        type: number
+      - name: stack
+        label: Technologies
+        type: string
+      - name: description
+        label: Short description
+        type: text
+        description: Shown on the project list and detail page.
+      - name: repository
+        label: Repository URL
+        type: string
+      - name: demo
+        label: Demo URL
+        type: string
+        required: false
+      - name: body
+        label: Project details
+        type: rich-text
+
+  - name: site_content
+    label: Site text
+    type: file
+    path: _data/content.yml
+    fields:
+      - name: home_intro
+        label: Home introduction
+        type: text
+      - name: home_note
+        label: Home note
+        type: text
+      - name: about_heading
+        label: About heading
+        type: text
+      - name: about_intro
+        label: About introduction
+        type: text
+      - name: about_work
+        label: About work
+        type: text
+      - name: about_personal
+        label: About personal
+        type: text
