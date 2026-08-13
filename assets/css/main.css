@@ -79,10 +79,6 @@ img { display: block; max-width: 100%; }
 }
 .eyebrow::before { content: "// "; }
 
-.home-hero { max-width: 720px; padding: 72px 0; }
-.hero-intro { max-width: 650px; margin: 0; color: var(--muted); }
-
-.home-section { padding-bottom: 70px; }
 .section-heading {
   display: flex;
   align-items: baseline;
@@ -109,16 +105,6 @@ img { display: block; max-width: 100%; }
 .post-row h3 { margin: 0 0 5px; font-size: 17px; font-weight: 500; }
 .post-row p { margin: 0; color: var(--muted); font-family: var(--sans); font-size: 13px; }
 .row-arrow { display: none; }
-
-.home-note {
-  margin-bottom: 70px;
-  padding: 24px 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-}
-.home-note .note-mark { display: none; }
-.home-note p:not(.eyebrow) { max-width: 650px; margin: 8px 0 14px; }
-.home-note > a { font-size: 11px; }
 
 .page-intro { max-width: 700px; padding: 65px 0 45px; }
 .page-intro h1 { margin: 10px 0 12px; font-size: 38px; font-weight: 500; letter-spacing: -.03em; }
@@ -214,7 +200,6 @@ img { display: block; max-width: 100%; }
     gap: 10px 14px;
   }
   .theme-toggle { justify-self: start; }
-  .home-hero { padding: 55px 0; }
   .post-row { grid-template-columns: 1fr; gap: 7px; }
   .post-row-meta time, .post-row-meta span { display: inline; margin-right: 10px; }
   .archive-year { grid-template-columns: 1fr; }

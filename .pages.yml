@@ -123,17 +123,6 @@ content:
         label: Contribution post
         type: rich-text
 
-  - name: site_content
-    label: Home page
-    type: file
-    path: _data/content.yml
-    fields:
-      - name: home_intro
-        label: Home introduction
-        type: text
-      - name: home_note
-        label: Home note
-        type: text
   - name: about_page
     label: About page
     type: file

@@ -1,39 +1,29 @@
 ---
-title:
-description: "The personal blog of Vicheka Oeun — software, systems, books, films, and other curiosities."
+title: Writing
+description: "Essays, field notes, and observations from Vicheka Oeun."
 ---
 
-<section class="home-hero">
-  <p class="hero-intro">{{ site.data.content.home_intro }}</p>
-</section>
+<header class="page-intro">
+  <p class="eyebrow">The archive</p>
+  <h1>Writing</h1>
+</header>
 
-<section class="home-section">
-  <div class="section-heading">
-    <h2>Latest writing</h2>
-    <a href="{{ '/writing/' | relative_url }}">View all <span aria-hidden="true">→</span></a>
-  </div>
-
-  <div class="post-list">
-    {% for post in site.posts limit: 5 %}
-      <article class="post-row{% if forloop.first %} featured{% endif %}">
-        <div class="post-row-meta">
-          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
-          {% if post.category %}<span>{{ post.category }}</span>{% endif %}
-        </div>
-        <div>
-          <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-          {% if post.description %}<p>{{ post.description }}</p>{% endif %}
-        </div>
-        <a class="row-arrow" href="{{ post.url | relative_url }}" aria-label="Read {{ post.title }}">↗</a>
-      </article>
-    {% endfor %}
-  </div>
-</section>
-
-<aside class="home-note">
-  <span class="note-mark" aria-hidden="true">✳</span>
-  <div>
-    <p>{{ site.data.content.home_note }}</p>
-  </div>
-  <a href="{{ '/about/' | relative_url }}">More about me →</a>
-</aside>
+<div class="archive">
+  {% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+  {% for year in posts_by_year %}
+    <section class="archive-year">
+      <h2>{{ year.name }}</h2>
+      <div class="archive-posts">
+        {% for post in year.items %}
+          <article>
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d" }}</time>
+            <div>
+              <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+              {% if post.description %}<p>{{ post.description }}</p>{% endif %}
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    </section>
+  {% endfor %}
+</div>
