@@ -7,7 +7,6 @@ description: "Essays, field notes, and observations from Vicheka Oeun."
 <header class="page-intro">
   <p class="eyebrow">The archive</p>
   <h1>Writing</h1>
-  <p>Essays, build logs, and notes from the things I’m learning.</p>
 </header>
 
 <div class="archive">
@@ -29,4 +28,3 @@ description: "Essays, field notes, and observations from Vicheka Oeun."
     </section>
   {% endfor %}
 </div>
-
