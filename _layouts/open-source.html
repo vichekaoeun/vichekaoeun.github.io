@@ -4,14 +4,14 @@ layout: default
 <article class="project-detail">
   <header class="project-detail-header">
     <a class="back-link" href="{{ '/open-source/' | relative_url }}">← All open source</a>
-    <p class="eyebrow">{{ page.role }}</p>
+    <p class="eyebrow">{% if page.date %}{{ page.date | date: "%B %-d, %Y" }} · {% endif %}{{ page.role }}</p>
     <h1>{{ page.title }}</h1>
     <p class="project-summary">{{ page.description }}</p>
     <div class="project-actions">
       {% if page.repository %}<a href="{{ page.repository }}">View repository ↗</a>{% endif %}
-      {% if page.contribution %}<a href="{{ page.contribution }}">View contribution ↗</a>{% endif %}
+      {% if page.contribution %}<a href="{{ page.contribution }}">View my contribution ↗</a>{% endif %}
+      <a href="https://github.com/{{ site.author.github }}?tab=overview">GitHub activity ↗</a>
     </div>
   </header>
   <div class="prose">{{ content }}</div>
 </article>
-

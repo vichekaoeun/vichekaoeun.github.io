@@ -47,6 +47,8 @@ Put post images in `assets/images/`, then use them anywhere in Markdown:
 - Open-source contributions: `_open_source/*.md`
 - Editable home text: `_data/content.yml`
 - Editable About page: `_data/about.yml`
+
+Open-source entries work like project posts. In Pages CMS, create an entry under **Open source**, add a date and write-up, then paste a direct link to your pull request, issue, or commits. The page also links to your overall GitHub contribution graph.
 - Colors, type, and layout: `assets/css/main.css`
 
 ## Preview locally

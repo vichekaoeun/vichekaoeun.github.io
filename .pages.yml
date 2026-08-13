@@ -88,7 +88,7 @@ content:
     path: _open_source
     filename: "{primary}.md"
     view:
-      fields: [title, role, order]
+      fields: [title, date, role, order]
       primary: title
       sort: [order, title]
       default:
@@ -101,6 +101,9 @@ content:
       - name: order
         label: Display order
         type: number
+      - name: date
+        label: Contribution date
+        type: date
       - name: role
         label: Your role
         type: string
@@ -112,11 +115,12 @@ content:
         type: string
         required: false
       - name: contribution
-        label: Contribution URL
+        label: Your PR, issue, or commits URL
         type: string
         required: false
+        description: Link directly to your work in this project. GitHub does not offer a contribution graph filtered to one repository.
       - name: body
-        label: Contribution details
+        label: Contribution post
         type: rich-text
 
   - name: site_content
