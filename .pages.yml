@@ -82,6 +82,43 @@ content:
         label: Project details
         type: rich-text
 
+  - name: open_source
+    label: Open source
+    type: collection
+    path: _open_source
+    filename: "{primary}.md"
+    view:
+      fields: [title, role, order]
+      primary: title
+      sort: [order, title]
+      default:
+        sort: order
+        order: asc
+    fields:
+      - name: title
+        label: Project name
+        type: string
+      - name: order
+        label: Display order
+        type: number
+      - name: role
+        label: Your role
+        type: string
+      - name: description
+        label: Short description
+        type: text
+      - name: repository
+        label: Repository URL
+        type: string
+        required: false
+      - name: contribution
+        label: Contribution URL
+        type: string
+        required: false
+      - name: body
+        label: Contribution details
+        type: rich-text
+
   - name: site_content
     label: Home page
     type: file
