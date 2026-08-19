@@ -10,6 +10,15 @@
   --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 }
 
+[data-theme="dark"] {
+  --bg: #111214;
+  --text: #ededf0;
+  --muted: #9a9da5;
+  --link: #74b7f2;
+  --line: #303238;
+  --code-bg: #202226;
+}
+
 * { box-sizing: border-box; }
 
 html { font-size: 16px; }
@@ -202,6 +211,17 @@ img { display: block; max-width: 100%; height: auto; }
 }
 .site-footer p { margin: 0; }
 .footer-links { display: flex; gap: 16px; }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111214;
+    --text: #ededf0;
+    --muted: #9a9da5;
+    --link: #74b7f2;
+    --line: #303238;
+    --code-bg: #202226;
+  }
+}
 
 @media (max-width: 600px) {
   .site-header { padding: 16px 0; }
