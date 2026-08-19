@@ -1,7 +1,7 @@
 ---
 title: Mozilla Support (Kitsune)
 order: 0
-date: 2026-08-13
+date: 2026-07-13
 role: Contributor
 repository: https://github.com/mozilla/kitsune
 ---
