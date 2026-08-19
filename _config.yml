@@ -11,6 +11,8 @@ permalink: /writing/:title/
 future: false
 
 collections:
+  work_history:
+    output: false
   projects:
     output: true
     permalink: /projects/:name/

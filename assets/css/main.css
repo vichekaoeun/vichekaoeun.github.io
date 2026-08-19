@@ -128,7 +128,6 @@ img { display: block; max-width: 100%; height: auto; }
 .post-end p { margin: 0; color: var(--muted); font-size: 13px; }
 
 .about-intro { padding-bottom: 22px; }
-.about-intro .eyebrow { display: none; }
 .about-intro h1 { max-width: 680px; font-size: 26px; }
 .about-grid { max-width: 700px; padding-bottom: 24px; }
 .about-copy > p { margin-bottom: 16px; }
@@ -142,6 +141,17 @@ img { display: block; max-width: 100%; height: auto; }
   letter-spacing: .06em;
   text-transform: uppercase;
 }
+.about-section { margin-top: 36px; }
+.about-section h2 { margin-top: 0; }
+.entries { margin: 0; padding: 0; list-style: none; }
+.entry { margin: 0 0 20px; }
+.entry:last-child { margin-bottom: 0; }
+.entry-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 12px; }
+.entry-name { font-size: 17px; font-weight: 600; }
+.entry-name a { color: var(--text); }
+.entry-period { color: var(--muted); font-size: 14px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.entry-role { margin-top: 2px; color: var(--muted); font-size: 14px; }
+.entry-desc { margin: 4px 0 0 !important; color: var(--text); font-size: 15px; line-height: 1.7; }
 
 .project-list { padding-bottom: 24px; }
 .project-card { padding: 20px 0; border-top: 1px solid var(--line); }

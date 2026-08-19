@@ -5,7 +5,6 @@ description: "Open-source contributions by Vicheka Oeun."
 ---
 
 <header class="page-intro">
-  <p class="eyebrow">Community work</p>
   <h1>Open source</h1>
   <p>Contributions to software built in the open.</p>
   <p class="github-activity"><a href="https://github.com/{{ site.author.github }}?tab=overview">View my GitHub contribution graph ↗</a></p>

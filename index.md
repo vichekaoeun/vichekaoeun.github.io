@@ -4,7 +4,6 @@ description: "Essays, field notes, and observations from Vicheka Oeun."
 ---
 
 <header class="page-intro">
-  <p class="eyebrow">The archive</p>
   <h1>Writing</h1>
 </header>
 

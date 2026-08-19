@@ -134,9 +134,6 @@ content:
       - name: intro
         label: Introduction
         type: text
-      - name: work
-        label: Work experience
-        type: text
       - name: personal
         label: Personal note
         type: text
@@ -146,3 +143,37 @@ content:
       - name: linkedin
         label: LinkedIn URL
         type: string
+
+  - name: work_history
+    label: Work history
+    type: collection
+    path: _work_history
+    filename: "{primary}.md"
+    view:
+      fields: [company, role, period, order]
+      primary: company
+      sort: [order, company]
+      default:
+        sort: order
+        order: asc
+    fields:
+      - name: company
+        label: Company
+        type: string
+      - name: company_url
+        label: Company URL
+        type: string
+        required: false
+      - name: period
+        label: Date range
+        type: string
+        description: For example, May 2026 – Present.
+      - name: role
+        label: Role
+        type: string
+      - name: description
+        label: Description
+        type: text
+      - name: order
+        label: Display order
+        type: number

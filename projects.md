@@ -5,7 +5,6 @@ description: "Selected software projects by Vicheka Oeun."
 ---
 
 <header class="page-intro">
-  <p class="eyebrow">Things I’ve made</p>
   <h1>Selected projects</h1>
 </header>
 

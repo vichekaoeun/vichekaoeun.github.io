@@ -9,7 +9,7 @@ A Markdown-powered Jekyll blog hosted on GitHub Pages.
 1. Visit [Pages CMS](https://app.pagescms.org).
 2. Sign in with the GitHub account that owns this repository.
 3. Select `vichekaoeun/vichekaoeun.github.io`.
-4. Open **Blog posts**, **Projects**, **Open source**, or **About page**.
+4. Open **Blog posts**, **Projects**, **Open source**, **About page**, or **Work history**.
 5. Edit using the form and rich-text editor, then press **Save**.
 
 Images can be uploaded from the editor. Saving commits the changes to GitHub, and GitHub Pages republishes the site automatically.
@@ -46,6 +46,7 @@ Put post images in `assets/images/`, then use them anywhere in Markdown:
 - Detailed project pages: `_projects/*.md`
 - Open-source contributions: `_open_source/*.md`
 - Editable About page: `_data/about.yml`
+- Editable work history: `_work_history/*.md`
 
 Open-source entries work like project posts. In Pages CMS, create an entry under **Open source**, add a date and write-up, then paste a direct link to your pull request, issue, or commits. The page also links to your overall GitHub contribution graph.
 - Colors, type, and layout: `assets/css/main.css`
