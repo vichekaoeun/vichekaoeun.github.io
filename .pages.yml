@@ -82,6 +82,40 @@ content:
         label: Project details
         type: rich-text
 
+  - name: education
+    label: Education
+    type: collection
+    path: _education
+    filename: "{primary}.md"
+    view:
+      fields: [school, program, period, order]
+      primary: school
+      sort: [order, school]
+      default:
+        sort: order
+        order: asc
+    fields:
+      - name: school
+        label: School
+        type: string
+      - name: school_url
+        label: School URL
+        type: string
+        required: false
+      - name: period
+        label: Date range
+        type: string
+      - name: program
+        label: Program or degree
+        type: string
+      - name: description
+        label: Description
+        type: text
+        required: false
+      - name: order
+        label: Display order
+        type: number
+
   - name: open_source
     label: Open source
     type: collection
@@ -128,9 +162,9 @@ content:
     type: file
     path: _data/about.yml
     fields:
-      - name: heading
-        label: Heading
-        type: text
+      - name: name
+        label: Name
+        type: string
       - name: intro
         label: Introduction
         type: text

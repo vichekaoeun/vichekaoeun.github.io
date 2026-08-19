@@ -11,6 +11,8 @@ permalink: /writing/:title/
 future: false
 
 collections:
+  education:
+    output: false
   work_history:
     output: false
   projects:
