@@ -53,6 +53,17 @@ permalink: /about/
           <p class="entry-desc">{% if activity.description %}{{ activity.description }}{% else %}{{ activity.content | strip_html | strip }}{% endif %}</p>
         </li>
       {% endfor %}
+      {% assign school_activities = site.school_activities | sort: "order" %}
+      {% for activity in school_activities %}
+        <li class="entry">
+          <div class="entry-head">
+            <span class="entry-name">{% if activity.activity_url %}<a href="{{ activity.activity_url }}">{{ activity.title }}</a>{% else %}{{ activity.title }}{% endif %}</span>
+            <span class="entry-period">{{ activity.period }}</span>
+          </div>
+          {% if activity.role %}<div class="entry-role">{{ activity.role }}</div>{% endif %}
+          {% if activity.description %}<p class="entry-desc">{{ activity.description }}</p>{% endif %}
+        </li>
+      {% endfor %}
     </ul>
   </section>
 

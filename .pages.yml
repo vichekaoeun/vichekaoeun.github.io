@@ -116,6 +116,42 @@ content:
         label: Display order
         type: number
 
+  - name: school_activities
+    label: School activities
+    type: collection
+    path: _school_activities
+    filename: "{primary}.md"
+    view:
+      fields: [title, role, period, order]
+      primary: title
+      sort: [order, title]
+      default:
+        sort: order
+        order: asc
+    fields:
+      - name: title
+        label: Activity or organization
+        type: string
+      - name: activity_url
+        label: Activity URL
+        type: string
+        required: false
+      - name: period
+        label: Date range
+        type: string
+        description: For example, Sep 2024 – Apr 2025.
+      - name: role
+        label: Your role
+        type: string
+        required: false
+      - name: description
+        label: Description
+        type: text
+        required: false
+      - name: order
+        label: Display order
+        type: number
+
   - name: open_source
     label: Open source
     type: collection

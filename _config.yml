@@ -13,6 +13,8 @@ future: false
 collections:
   education:
     output: false
+  school_activities:
+    output: false
   work_history:
     output: false
   projects:
