@@ -5,6 +5,7 @@ permalink: /about/
 
 <div class="about">
   <div class="about-hero">
+    <img src="{{ '/assets/images/profile.PNG' | relative_url }}" width="80" height="80" alt="Vicheka Oeun">
     <div class="about-hero-body">
       <h1>{{ site.data.about.name }}</h1>
       <ul class="about-links">
