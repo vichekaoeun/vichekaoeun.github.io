@@ -20,3 +20,6 @@ The segmentation breaks down the different services into separate subnets.
 
 ## Packet Lifecycle
 
+1. External client sends a request for a TCP connection, their IP is 10.10.10.10
+2. This hits our Firewall's external interface *eth1*
+
