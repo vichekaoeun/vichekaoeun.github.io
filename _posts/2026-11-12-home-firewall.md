@@ -18,3 +18,5 @@ The segmentation breaks down the different services into separate subnets.
 - 10.10.30.10 is the internal service network where all internal API's can be called or calls.
 - 10.10.40.20 is our heavily restricted network where the database can be accessed.
 
+## Packet Lifecycle
+
