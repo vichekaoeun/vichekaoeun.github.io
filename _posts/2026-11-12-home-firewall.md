@@ -28,7 +28,9 @@ The segmentation breaks down the different services into separate subnets.
 3. Connection is made and the destination is the Web server, the firewall's external IP is 10.10.10.2 and DNAT will redirect it to the web server's IP 10.10.20.10 at port 80 then connect to interface *eth0* for web server.
 4. The packet is forwarded and now nftable will decide whether to allow or drop it
 5. In our firewall rule, external-to-DMZ is permitted on port 80 and 443 (HTTP/HTTPS) which DNAT brings our packet to at port 80.
-6. In post-routing we use SNAT to change the source IP address as coming from our DMZ interface, this is because Docker has weird internal networking going on. 
+6. In post-routing we use SNAT to change the source IP address as coming from our DMZ interface, this is because Docker has weird internal networking going on.
 7. Web server now receives the packet but it responds to the DMZ interface rather than the original IP because of SNAT workaround.
 8. Packet is sent back via chain-forwarding finishing the TCP connection.
+
+![](/assets/images/firewall_dnat_snat_packet_flow.png)
 
