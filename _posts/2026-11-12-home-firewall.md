@@ -34,3 +34,23 @@ The segmentation breaks down the different services into separate subnets.
 
 ![](/assets/images/firewall_dnat_snat_packet_flow.png)
 
+## Control plane
+
+The control plane are the scripts responsible for validating configuration, automating the deployment of firewall policies and tests allowed and block traffics. These are Python, Ansible and configuration scripts.
+
+### Data plane
+
+The data plane is our packets, filters and traffic which is performed by our Linux nftable.
+
+## Monitoring
+
+There are 4 components to monitoring:
+
+- Exporter: collects information from the firewall
+- Prometheus: gathers and stores that information
+- Grafana: turns the information into a dashboard
+- Grafana Alerts: notifies me when packets drop
+
+
+
+&nbsp;
