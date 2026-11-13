@@ -2,6 +2,7 @@
 title: Home Firewall
 description: This is a personal project I've been working on to a build a firewall.
 date: 2026-11-12
+image: /assets/images/this-is-fine-1.jpg
 ---
 # Architecture
 
