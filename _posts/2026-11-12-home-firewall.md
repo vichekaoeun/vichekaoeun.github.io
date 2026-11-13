@@ -51,3 +51,7 @@ There are 4 components to monitoring:
 - Grafana: turns the information into a dashboard
 - Grafana Alerts: notifies me when packets drop
 
+# Next steps
+
+I'm working on building on top of this project and enable it to protect rogue AI Agents.
+
