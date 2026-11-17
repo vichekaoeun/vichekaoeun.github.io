@@ -28,9 +28,11 @@ As I continue to scale Powerscale, in the future we would need to secure against
 
 A dedicated service running that acts as an entry-point for the rest of the other microservices. It does 3 things:
 
-1. Routing - it looks at the request path and forward it to the necessary microservice
-2. Load balancing - if a microservice has multiple instances the request load is split across them. (working locally so doesn't properly scale yet but idea is there).
-3. Circuit breaking and fallback - if a microservice is constantly failing the gateway stops calling it and returns a quick fallback response to the User. This lets user much faster response if something is failing rather than waiting for a timeout.
+1. **Routing** - it looks at the request path and forward it to the necessary microservice
+2. **Load balancing** - if a microservice has multiple instances the request load is split across them. (working locally so doesn't properly scale yet but idea is there).
+3. **Circuit breaking and fallback** - if a microservice is constantly failing the gateway stops calling it and returns a quick fallback response to the User. This lets user much faster response if something is failing rather than waiting for a timeout.
+
+I use the Resilience4j library to setup the fault tolerance which is set to a threshold of 20-call window, 15s open state.
 
 
 
