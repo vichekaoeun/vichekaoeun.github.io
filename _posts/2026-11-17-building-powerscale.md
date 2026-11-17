@@ -34,6 +34,5 @@ A dedicated service running that acts as an entry-point for the rest of the othe
 
 I use the Resilience4j library to setup the fault tolerance which is set to a threshold of 20-call window, 15s open state.
 
+![](/assets/images/gateway_resilience4j_circuit_breaker.png)
 
-
-&nbsp;
