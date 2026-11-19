@@ -36,3 +36,27 @@ I use the Resilience4j library to setup the fault tolerance which is set to a th
 
 ![](/assets/images/gateway_resilience4j_circuit_breaker.png)
 
+## Voting Service
+
+### Problem:
+
+When creating a vote, the votes need to saved to Vote Service's database, then Ranking Service has to find out and update the rating / leaderboard.
+
+Since both our services has independent databases' no single transaction can cover both. This is a problem called **Dual-Write**. We publish events to Kafka so other services can read them, but we also need to update the database. Many failure scenario like
+
+- Publish first, but if save fails, ranking service is counting a vote that doesn't exist
+- Vote is saved, but event failed so we have a vote that is never counted for
+
+### Solution:
+
+Using Transactional Outbox Pattern, the Voting Service writes the vote and an event row to an `outbox` table in the same local database transaction. Then a job reads any unpublished row every 500ms and sends them to Kafka, waits for acknowledgement and finally marks them as published.
+
+![](/assets/images/maxresdefault.jpg)
+
+there's a great [video](https://www.youtube.com/watch?v=5YLpjPmsPCA&t=27s) by Confluent on Youtube that explains this exact approach and scenario.
+
+## Ranking Service
+
+
+
+&nbsp;
